@@ -1,0 +1,12 @@
+file_format: "1"
+id: kase
+name: KaSe
+type: shield
+requires: [gpio]
+exposes: []
+features:
+  - keys
+siblings:
+  - kase_dongle
+  - kase_left
+  - kase_right

@@ -1,0 +1,11 @@
+# Copyright (c) 2025 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+config SHIELD_KASE_DONGLE
+	def_bool $(shields_list_contains,kase_dongle)
+
+config SHIELD_KASE_LEFT
+	def_bool $(shields_list_contains,kase_left)
+
+config SHIELD_KASE_RIGHT
+	def_bool $(shields_list_contains,kase_right)

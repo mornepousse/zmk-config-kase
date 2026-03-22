@@ -1,0 +1,16 @@
+# KaSe split keyboard - ESB dongle configuration
+# Builds: USB dongle (central), left peripheral, right peripheral
+---
+include:
+  - board: nrf52840dongle/nrf52840//zmk
+    shield: kase_dongle
+    artifact-name: kase_dongle
+  - board: nice_nano@2.0.0//zmk
+    shield: kase_left
+    artifact-name: kase_left
+  - board: nice_nano@2.0.0//zmk
+    shield: kase_right
+    artifact-name: kase_right
+  - board: nice_nano@2.0.0//zmk
+    shield: settings_reset
+    artifact-name: nicenano_settings_reset

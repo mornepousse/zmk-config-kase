@@ -1,0 +1,39 @@
+/*
+ * KaSe right peripheral overlay
+ *
+ * Reversible PCB — right side is physically flipped.
+ * Cols in REVERSED order (PCB mirror: leftmost key = what was col6)
+ * col-offset = 7 shifts right half into cols 7..13
+ */
+
+#include "kase.dtsi"
+#include "kase_esb_addr.dtsi"
+
+&default_transform {
+    col-offset = <7>;
+};
+
+&kscan0 {
+    col-gpios
+        = <&gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* COL0 = D14 = P1.11 (was COL6 on left) */
+        , <&gpio0 9  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* COL1 = D10 = P0.09 (was COL5 on left) */
+        , <&gpio1 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* COL2 = D9  = P1.06 (was COL4 on left) */
+        , <&gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* COL3 = D8  = P1.04 (was COL3 on left) */
+        , <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* COL4 = D7  = P0.11 (was COL2 on left) */
+        , <&gpio1 0  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* COL5 = D6  = P1.00 (was COL1 on left) */
+        , <&gpio0 24 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* COL6 = D5  = P0.24 (was COL0 on left) */
+        ;
+};
+
+/ {
+    chosen {
+        zmk,battery = &vbatt;
+    };
+
+    vbatt: vbatt {
+        compatible = "zmk,battery-voltage-divider";
+        io-channels = <&adc 2>;
+        output-ohms = <2000000>;
+        full-ohms = <(2000000 + 806000)>;
+    };
+};

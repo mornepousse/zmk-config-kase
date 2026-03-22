@@ -1,0 +1,34 @@
+/*
+ * KaSe left peripheral overlay
+ *
+ * Reversible PCB — left side orientation.
+ * Cols in natural order (left-to-right = col0..col6)
+ */
+
+#include "kase.dtsi"
+#include "kase_esb_addr.dtsi"
+
+&kscan0 {
+    col-gpios
+        = <&gpio0 24 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* COL0 = D5  = P0.24 */
+        , <&gpio1 0  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* COL1 = D6  = P1.00 */
+        , <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* COL2 = D7  = P0.11 */
+        , <&gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* COL3 = D8  = P1.04 */
+        , <&gpio1 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* COL4 = D9  = P1.06 */
+        , <&gpio0 9  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* COL5 = D10 = P0.09 */
+        , <&gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* COL6 = D14 = P1.11 */
+        ;
+};
+
+/ {
+    chosen {
+        zmk,battery = &vbatt;
+    };
+
+    vbatt: vbatt {
+        compatible = "zmk,battery-voltage-divider";
+        io-channels = <&adc 2>;
+        output-ohms = <2000000>;
+        full-ohms = <(2000000 + 806000)>;
+    };
+};

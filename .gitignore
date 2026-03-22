@@ -1,0 +1,14 @@
+build/
+.west/
+*.uf2
+*.hex
+*.bin
+
+# West checkouts (managed by west update, not committed)
+/zephyr/
+/zmk/
+/nrf/
+/nrfxlib/
+/modules/
+/zmk-feature-split-esb/
+/optional/

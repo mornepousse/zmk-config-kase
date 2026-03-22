@@ -1,0 +1,15 @@
+/*
+ * ESB address configuration for KaSe keyboard.
+ * These addresses must match between dongle and all peripherals.
+ * Change these values to make your keyboard unique (avoid interference
+ * with other ESB devices nearby).
+ */
+
+/ {
+    esb_split {
+        compatible = "zmk,esb-split";
+        base-addr-0 = <0x4B 0x61 0x53 0x65>;  /* "KaSe" in ASCII */
+        base-addr-1 = <0x65 0x53 0x61 0x4B>;  /* "eSaK" reversed  */
+        addr-prefix = <0xE7 0xC2 0xC3 0xC4 0xC5 0xC6 0xC7 0xC8>;
+    };
+};

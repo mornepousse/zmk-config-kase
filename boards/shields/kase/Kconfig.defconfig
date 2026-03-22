@@ -1,0 +1,29 @@
+# Copyright (c) 2025
+# SPDX-License-Identifier: MIT
+
+if SHIELD_KASE_DONGLE
+
+config ZMK_KEYBOARD_NAME
+    default "KaSe"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
+    default 2
+
+endif
+
+if SHIELD_KASE_LEFT || SHIELD_KASE_RIGHT
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default n
+
+endif
+
+if SHIELD_KASE_LEFT || SHIELD_KASE_RIGHT || SHIELD_KASE_DONGLE
+
+config ZMK_SPLIT
+    default y
+
+endif
