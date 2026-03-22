@@ -1,0 +1,24 @@
+/* Override partition layout for direct ST-Link flash (no bootloader) */
+
+/delete-node/ &code_partition;
+/delete-node/ &sd_partition;
+/delete-node/ &boot_partition;
+/delete-node/ &storage_partition;
+
+&flash0 {
+    partitions {
+        compatible = "fixed-partitions";
+        #address-cells = <1>;
+        #size-cells = <1>;
+
+        code_partition: partition@0 {
+            label = "code_partition";
+            reg = <0x00000000 0x000ec000>;
+        };
+
+        storage_partition: partition@ec000 {
+            label = "storage";
+            reg = <0x000ec000 0x00014000>;
+        };
+    };
+};
