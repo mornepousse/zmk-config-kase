@@ -14,6 +14,8 @@ let
     intelhex
     cbor2
     cryptography
+    protobuf
+    grpcio-tools
   ]);
 in
 pkgs.mkShell {
@@ -24,6 +26,7 @@ pkgs.mkShell {
     pkgs.dtc
     pkgs.gcc-arm-embedded
     pkgs.nrfutil
+    pkgs.protobuf
   ];
 
   shellHook = ''
